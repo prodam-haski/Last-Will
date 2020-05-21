@@ -11,10 +11,19 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.prodadimhaski.lastwill.R;
+import com.prodadimhaski.lastwill.Room.Dao.LoginDao;
+import com.prodadimhaski.lastwill.Room.Database;
+import com.prodadimhaski.lastwill.Room.entities.Login;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Database db;
+    private LoginDao loginDao;
+
     SharedPreferences preferences;
+
     Button enter;
     EditText passwordField;
 
@@ -30,10 +39,12 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         if (preferences.getBoolean("firstrun", true)) {
-
             Intent intent = new Intent(MainActivity.this,LoginActivity.class);
             startActivity(intent);
             preferences.edit().putBoolean("firstrun", false).apply();
+        }
+        else {
+            initButton();
         }
     }
 
@@ -45,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!passwordField.getText().toString().trim().equals("")) {
+                    db = Database.getInstance(getApplicationContext());
+                    loginDao = db.loginDao();
+                    List<Login> logins = loginDao.getAll(); 
+                    if(passwordField.getText().toString().trim().equals(logins.get(0).getPassword())){
+                        Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else Toast.makeText(MainActivity.this, R.string.wrongPassword, Toast.LENGTH_SHORT).show();
 
                 }
                 else Toast.makeText(MainActivity.this, R.string.enterPassword, Toast.LENGTH_SHORT).show();
@@ -64,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.exit, Toast.LENGTH_SHORT).show();
         }
         backPressedTime = System.currentTimeMillis();
-
     }
-
 
 }

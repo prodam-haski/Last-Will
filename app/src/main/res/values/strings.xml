@@ -2,6 +2,7 @@
     <string name="app_name">LastWill</string>
 
     <string name="enterPassword">Enter the password</string>
+    <string name="wrongPassword">Wrong password</string>
     <string name="enter">Enter</string>
     <string name="exit">Click again to exit</string>
 </resources>
