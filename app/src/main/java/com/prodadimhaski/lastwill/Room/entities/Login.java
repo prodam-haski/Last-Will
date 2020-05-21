@@ -2,9 +2,13 @@ package com.prodadimhaski.lastwill.Room.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity(tableName = "login")
 public class Login {
+    @PrimaryKey
+    private int id;
+
     @NonNull
     private String password;
 
@@ -13,6 +17,14 @@ public class Login {
 
     @NonNull
     private String answer;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @NonNull
     public String getPassword() {
@@ -31,6 +43,7 @@ public class Login {
     public void setQuestion(@NonNull String question) {
         this.question = question;
     }
+
 
     @NonNull
     public String getAnswer() {
