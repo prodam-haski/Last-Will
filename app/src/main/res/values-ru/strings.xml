@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LastWill</string>
+
+    <string name="enterPassword">Введите пароль</string>
+    <string name="enter">Войти</string>
+    <string name="exit">Нажмите еще раз, чтобы выйти</string>
+</resources>
