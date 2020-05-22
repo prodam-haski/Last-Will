@@ -59,7 +59,7 @@ public class RecoveryPasswordActivity extends AppCompatActivity {
                     else
                         Toast.makeText(RecoveryPasswordActivity.this, R.string.newPassword, Toast.LENGTH_SHORT).show();
                 }
-                else Toast.makeText(RecoveryPasswordActivity.this, "", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(RecoveryPasswordActivity.this, R.string.wrongAnswer, Toast.LENGTH_SHORT).show();
             }
         });
     }
