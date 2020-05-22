@@ -19,7 +19,7 @@ public abstract class Database extends RoomDatabase {
     private static Database instance;
 
     public abstract LoginDao loginDao();
-    public abstract WillsDao WillsDao();
+    public abstract WillsDao willsDao();
 
     public static synchronized Database getInstance(Context context)  {
         if (instance == null) {

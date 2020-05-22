@@ -2,7 +2,17 @@
     <string name="app_name">LastWill</string>
 
     <string name="enterPassword">Enter the password</string>
+    <string name="specialQuestion">Question for password recovery</string>
+    <string name="specialAnswer">Response to question</string>
     <string name="wrongPassword">Wrong password</string>
+    <string name="forgotPassword"><u>Forgot your password?</u></string>
+
     <string name="enter">Enter</string>
     <string name="exit">Click again to exit</string>
+
+    <string name="response">Enter the answer to the question</string>
+    <string name="newPassword">Enter the new password</string>
+    <string name="confirm">Confirm</string>
+    <string name="wrongAnswer">Wrong answer</string>
+
 </resources>

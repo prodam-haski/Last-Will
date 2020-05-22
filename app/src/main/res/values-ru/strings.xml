@@ -2,7 +2,17 @@
     <string name="app_name">LastWill</string>
 
     <string name="enterPassword">Введите пароль</string>
+    <string name="specialQuestion">Вопрос для восстановления пароля</string>
+    <string name="specialAnswer">Ответ на вопрос</string>
     <string name="wrongPassword">Неправильный пароль</string>
+
+    <string name="forgotPassword"><u>Забыли пароль?</u></string>
+
     <string name="enter">Войти</string>
     <string name="exit">Нажмите еще раз, чтобы выйти</string>
+
+    <string name="response">Введите ответ на вопрос</string>
+    <string name="newPassword">Введите новый пароль</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="wrongAnswer">Неправильный ответ</string>
 </resources>

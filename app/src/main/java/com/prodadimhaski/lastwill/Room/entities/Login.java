@@ -44,6 +44,12 @@ public class Login {
         this.question = question;
     }
 
+    public Login(int id, @NonNull String password, @NonNull String question, @NonNull String answer) {
+        this.id = id;
+        this.password = password;
+        this.question = question;
+        this.answer = answer;
+    }
 
     @NonNull
     public String getAnswer() {

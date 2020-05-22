@@ -1,9 +1,8 @@
-package com.prodadimhaski.lastwill.ui;
+package com.prodadimhaski.lastwill.ui.startActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +13,7 @@ import com.prodadimhaski.lastwill.R;
 import com.prodadimhaski.lastwill.Room.Dao.LoginDao;
 import com.prodadimhaski.lastwill.Room.Database;
 import com.prodadimhaski.lastwill.Room.entities.Login;
+import com.prodadimhaski.lastwill.ui.UserActivity;
 
 import java.util.List;
 
@@ -22,34 +22,22 @@ public class MainActivity extends AppCompatActivity {
     private Database db;
     private LoginDao loginDao;
 
-    SharedPreferences preferences;
-
     Button enter;
+    Button forgotPassword;
     EditText passwordField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        preferences = getSharedPreferences("com.prodadimhaski.lastwill", MODE_PRIVATE);
+        initButton();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
 
-        if (preferences.getBoolean("firstrun", true)) {
-            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-            startActivity(intent);
-            preferences.edit().putBoolean("firstrun", false).apply();
-        }
-        else {
-            initButton();
-        }
-    }
 
     private void initButton(){
         enter = findViewById(R.id.buttonEnter);
+        forgotPassword = findViewById(R.id.buttonForgotPassword);
         passwordField = findViewById(R.id.editPassword);
 
         enter.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else Toast.makeText(MainActivity.this, R.string.enterPassword, Toast.LENGTH_SHORT).show();
 
+            }
+        });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,RecoveryPasswordActivity.class);
+                startActivity(intent);
             }
         });
     }
