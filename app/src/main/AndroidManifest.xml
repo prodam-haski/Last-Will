@@ -8,9 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.startActivities.RecoveryPasswordActivity"></activity>
-        <activity android:name=".ui.UserActivity" />
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <activity android:name=".ui.mainActivities.NewWillActivity"></activity>
+        <activity android:name=".ui.startActivities.RecoveryPasswordActivity" />
+        <activity android:name=".ui.mainActivities.UserActivity" />
         <activity android:name=".ui.startActivities.MainActivity" />
         <activity android:name=".ui.startActivities.LoginActivity">
             <intent-filter>

@@ -13,7 +13,7 @@ import com.prodadimhaski.lastwill.R;
 import com.prodadimhaski.lastwill.Room.Dao.LoginDao;
 import com.prodadimhaski.lastwill.Room.Database;
 import com.prodadimhaski.lastwill.Room.entities.Login;
-import com.prodadimhaski.lastwill.ui.UserActivity;
+import com.prodadimhaski.lastwill.ui.mainActivities.UserActivity;
 
 import java.util.List;
 
@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    private void initButton(){
+    private void initButton() {
         enter = findViewById(R.id.buttonEnter);
         forgotPassword = findViewById(R.id.buttonForgotPassword);
         passwordField = findViewById(R.id.editPassword);
@@ -46,16 +45,16 @@ public class MainActivity extends AppCompatActivity {
                 if (!passwordField.getText().toString().trim().equals("")) {
                     db = Database.getInstance(getApplicationContext());
                     loginDao = db.loginDao();
-                    List<Login> logins = loginDao.getAll(); 
-                    if(passwordField.getText().toString().trim().equals(logins.get(0).getPassword())){
+                    List<Login> logins = loginDao.getAll();
+                    if (passwordField.getText().toString().trim().equals(logins.get(0).getPassword())) {
                         Intent intent = new Intent(MainActivity.this, UserActivity.class);
                         startActivity(intent);
                         finish();
-                    }
-                    else Toast.makeText(MainActivity.this, R.string.wrongPassword, Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(MainActivity.this, R.string.wrongPassword, Toast.LENGTH_SHORT).show();
 
-                }
-                else Toast.makeText(MainActivity.this, R.string.enterPassword, Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(MainActivity.this, R.string.enterPassword, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -63,13 +62,14 @@ public class MainActivity extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,RecoveryPasswordActivity.class);
+                Intent intent = new Intent(MainActivity.this, RecoveryPasswordActivity.class);
                 startActivity(intent);
             }
         });
     }
 
     private long backPressedTime;
+
     @Override
     public void onBackPressed() {
 

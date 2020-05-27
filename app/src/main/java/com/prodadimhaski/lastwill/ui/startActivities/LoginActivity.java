@@ -14,7 +14,7 @@ import com.prodadimhaski.lastwill.R;
 import com.prodadimhaski.lastwill.Room.Dao.LoginDao;
 import com.prodadimhaski.lastwill.Room.Database;
 import com.prodadimhaski.lastwill.Room.entities.Login;
-import com.prodadimhaski.lastwill.ui.UserActivity;
+import com.prodadimhaski.lastwill.ui.mainActivities.UserActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

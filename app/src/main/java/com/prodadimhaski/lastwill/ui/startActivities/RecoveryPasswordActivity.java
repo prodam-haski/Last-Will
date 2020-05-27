@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -40,9 +41,9 @@ public class RecoveryPasswordActivity extends AppCompatActivity {
     }
 
 
-    private void initButton(){
+    private void initButton() {
         newPasswordField = findViewById(R.id.editNewPassword);
-        answerField= findViewById(R.id.editAnswerQuestion);
+        answerField = findViewById(R.id.editAnswerQuestion);
         questionField = findViewById(R.id.textQuestion);
         buttonConfirm = findViewById(R.id.buttonConfirmPassword);
 
@@ -51,22 +52,26 @@ public class RecoveryPasswordActivity extends AppCompatActivity {
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(answerField.getText().toString().trim().equals(loginList.get(0).getAnswer())){
-                    if(!newPasswordField.getText().toString().trim().equals("")){
+                if (answerField.getText().toString().trim().equals(loginList.get(0).getAnswer())) {
+                    if (!newPasswordField.getText().toString().trim().equals("")) {
                         changePassword(newPasswordField.getText().toString().trim());
                         finish();
-                    }
-                    else
+                    } else
                         Toast.makeText(RecoveryPasswordActivity.this, R.string.newPassword, Toast.LENGTH_SHORT).show();
-                }
-                else Toast.makeText(RecoveryPasswordActivity.this, R.string.wrongAnswer, Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(RecoveryPasswordActivity.this, R.string.wrongAnswer, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void changePassword(String newPassword){
+    private void changePassword(String newPassword) {
         loginDao.delete(loginList.get(0));
-        Login login = new Login(1,newPassword,loginList.get(0).getQuestion(),loginList.get(0).getAnswer());
+        Login login = new Login(1, newPassword, loginList.get(0).getQuestion(), loginList.get(0).getAnswer());
         loginDao.create(login);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }
